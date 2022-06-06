@@ -1,39 +1,32 @@
 package com.vishnevskiypro.light
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Layout
-import android.view.View
-import android.widget.Button
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.isVisible
+import com.vishnevskiypro.light.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var btn: Button
-    lateinit var flashClass: Flash
-    lateinit var flashLayout: ConstraintLayout
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var flashClass: Flash
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        btn = findViewById(R.id.btnFlash)
         flashClass = Flash(context = this)
-        flashLayout = findViewById<ConstraintLayout>(R.id.flashLayout)
 
-        btn.setOnClickListener {
-            if (flashClass.isFlashStatus() == false){
-                flashClass.flashOn()
-                btn.text = "Flash off"
-                flashLayout.setBackgroundColor(Color.BLACK)
+        binding.buttonOn.setOnClickListener{
+            flashClass.flashOff()
+            binding.buttonOn.isVisible = false
+            binding.buttonOff.isVisible = true
+        }
 
-            } else {
-                flashClass.flashOff()
-                btn.text = "Flash on"
-                flashLayout.setBackgroundColor(Color.WHITE)
-            }
+        binding.buttonOff.setOnClickListener{
+            flashClass.flashOn()
+            binding.buttonOff.isVisible = false
+            binding.buttonOn.isVisible = true
         }
     }
 
