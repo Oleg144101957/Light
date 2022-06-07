@@ -11,3 +11,5 @@ FlashLight
 -The colors of Navigation Bar and Status Bar was changed to dark
 
 -Screen orientation was locked
+
+
