@@ -3,6 +3,8 @@ FlashLight
 
 <b>ver 2 changes</b>
 
+https://play.google.com/store/apps/details?id=com.vishnevskiypro.light&hl=ru&gl=US
+
 
 -New Design
 
